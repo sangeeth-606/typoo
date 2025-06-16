@@ -1,3 +1,4 @@
+// A Rust typing speed test application
 use crossterm::{
     cursor::{MoveTo, Show, Hide},
     event::{self, Event, KeyCode},
