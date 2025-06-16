@@ -67,7 +67,6 @@ fn main() -> std::io::Result<()> {
 
         // Display words with better formatting
         let current_word = words[current_word_idx];
-        let mut display_pos = 0;
         
         // Display current word with character-by-character highlighting
         for (i, c) in current_word.chars().enumerate() {
@@ -80,18 +79,15 @@ fn main() -> std::io::Result<()> {
             } else {
                 queue!(stdout(), SetForegroundColor(Color::White), Print(c), ResetColor)?;
             }
-            display_pos += 1;
         }
         
         // Add space after current word
         queue!(stdout(), Print(" "))?;
-        display_pos += 1;
 
         // Display next 3 words
         for i in (current_word_idx + 1)..(current_word_idx + 4).min(words.len()) {
             queue!(stdout(), SetForegroundColor(Color::DarkGrey), Print(words[i]), ResetColor)?;
             queue!(stdout(), Print(" "))?;
-            display_pos += words[i].len() + 1;
         }
 
         // Move to input line
