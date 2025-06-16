@@ -12,14 +12,7 @@ use std::time::{Duration, Instant};
 use std::fs;
 use std::path::Path;
 
-const WORDS: &[&str] = &[
-    "apple", "banana", "cherry", "date", "elder", "fig", "grape", "honey", "ice", "jam",
-    "kiwi", "lemon", "mango", "nut", "orange", "pear", "quince", "raspberry", "strawberry",
-    "tangerine", "umbrella", "vanilla", "watermelon", "xylophone", "yogurt", "zucchini",
-    "book", "car", "dog", "elephant", "fish", "garden", "house", "island", "jungle",
-    "kite", "lamp", "moon", "nest", "ocean", "pencil", "queen", "river", "sun", "tree",
-    "unicorn", "village", "wind", "xenon", "yarn", "zebra",
-];
+mod words;
 
 fn load_highest_wpm() -> u32 {
     let path = Path::new(&std::env::var("HOME").unwrap_or(".".to_string())).join(".typo_highest_wpm");
@@ -42,7 +35,7 @@ fn main() -> std::io::Result<()> {
     let mut highest_wpm = load_highest_wpm();
 
     // Game state
-    let mut words: Vec<&str> = WORDS.to_vec();
+    let mut words: Vec<&str> = words::WORDS.to_vec();
     words.shuffle(&mut rand::thread_rng());
     let mut current_word_idx = 0;
     let mut user_input = String::new();
