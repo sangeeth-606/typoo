@@ -11,16 +11,23 @@ use std::io::{stdout, Write};
 use std::time::{Duration, Instant};
 use std::fs;
 use std::path::Path;
-use self_update::{get_latest_release, update::Release};
+use self_update::update::Release;
 
 mod words;
 
 fn check_for_updates() -> Result<Option<Release>, Box<dyn std::error::Error>> {
-    let releases = get_latest_release("typoo", "typoo")?;
+    let updater = self_update::backends::github::Update::configure()
+        .repo_owner("sangeeth-606")
+        .repo_name("typoo")
+        .bin_name("typoo")
+        .current_version(env!("CARGO_PKG_VERSION"))
+        .build()?;
+    
+    let latest_release = updater.get_latest_release()?;
     let current_version = env!("CARGO_PKG_VERSION");
     
-    if releases.version != current_version {
-        Ok(Some(releases))
+    if latest_release.version != current_version {
+        Ok(Some(latest_release))
     } else {
         Ok(None)
     }
