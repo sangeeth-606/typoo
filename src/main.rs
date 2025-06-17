@@ -20,7 +20,7 @@ fn load_highest_wpm() -> u32 {
         .map(|s| s.trim().parse().unwrap_or(0))
         .unwrap_or(0)
 }
-
+//which mean's it return's nothing on succes but can return an error
 fn save_highest_wpm(wpm: u32) -> std::io::Result<()> {
     let path = Path::new(&std::env::var("HOME").unwrap_or(".".to_string())).join(".typo_highest_wpm");
     fs::write(path, wpm.to_string())
@@ -34,7 +34,7 @@ fn main() -> std::io::Result<()> {
     // Load highest WPM
     let mut highest_wpm = load_highest_wpm();
 
-    // Game state
+    // Game state/logic'ss
     let mut words: Vec<&str> = words::WORDS.to_vec();
     words.shuffle(&mut rand::thread_rng());
     let mut current_word_idx = 0;
@@ -99,7 +99,7 @@ fn main() -> std::io::Result<()> {
         )?;
         stdout().flush()?;
 
-        // Handle input (non-blocking)
+        // Handle input (non-terminal freezing1)
         if event::poll(Duration::from_millis(100))? {
             if let Event::Key(key) = event::read()? {
                 match key.code {

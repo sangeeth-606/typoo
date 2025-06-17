@@ -1,4 +1,4 @@
-/// Contains the list of words used in the typing game
+/// Contains the list of words used for typoo
 pub const WORDS: &[&str] = &[
     "apple", "banana", "cherry", "date", "elder", "fig", "grape", "honey", "ice", "jam",
     "kiwi", "lemon", "mango", "nut", "orange", "pear", "quince", "raspberry", "strawberry",
