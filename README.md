@@ -12,51 +12,9 @@ A blazing fast, terminal-based typing speed test application written in Rust.
 
 ## 📸 Examples
 
-### Welcome Screen
-```
-╔════════════════════════════════════════╗
-║            Welcome to Typoo!           ║
-╚════════════════════════════════════════╝
-Highest WPM: 85
-Press Enter to Start
-Press Esc to Exit
-```
-*Note: "Welcome to Typoo!" appears in cyan, "Highest WPM" in yellow, "Press Enter" in green, and "Press Esc" in red*
+### Screenshot
 
-### Typing Test Screen
-```
-╔════════════════════════════════════════════════════════════════════════════════╗
-║ Timer: 25s                                                      Highest WPM: 85 ║
-╚════════════════════════════════════════════════════════════════════════════════╝
-
-Type the following:
-apple banana cherry date elder
-
-Your input: appl
-```
-*Note: Timer and Highest WPM are in yellow, "Type the following" is in cyan, correctly typed characters are in green, incorrect characters are in red, and upcoming words are in dark grey*
-
-### Results Screen
-```
-╔════════════════════════════════════════════════════╗
-║                Test Complete!                      ║
-║ Your WPM: 75                                      ║
-║ Highest WPM: 85                                   ║
-╚════════════════════════════════════════════════════╝
-Press Enter to Start New Test
-Press Esc to Exit
-```
-*Note: "Test Complete!" is in cyan, WPM scores are in yellow, "Press Enter" is in green, and "Press Esc" is in red*
-
-### Update Notification
-```
-╔════════════════════════════════════════════════════════════╗
-║                  New Version Available!                    ║
-║ A new version (1.1.0) is available!                        ║
-║ Would you like to update now? (Y/N)                        ║
-╚════════════════════════════════════════════════════════════╝
-```
-*Note: The entire update notification box appears in yellow*
+![Screenshot](https://res.cloudinary.com/dqfeeuhgq/image/upload/v1750350773/Screenshot_19-Jun_21-59-37_32223_fcjmic.png)
 
 ## ✨ Features
 
