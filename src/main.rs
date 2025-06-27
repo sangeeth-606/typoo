@@ -152,6 +152,9 @@ fn main() -> std::io::Result<()> {
 
     // Main game loop
     loop {
+        // Show cursor during the test
+        execute!(stdout(), Show)?;
+
         // Game state/logic
         let mut words: Vec<&str> = words::WORDS.to_vec();
         words.shuffle(&mut rand::thread_rng());
@@ -218,15 +221,8 @@ fn main() -> std::io::Result<()> {
                 queue!(stdout(), Print(" "))?;
             }
 
-            // Move to input line
-            queue!(
-                stdout(),
-                MoveTo(center_x - 20, 7),
-                SetForegroundColor(Color::Cyan),
-                Print("Your input: "),
-                ResetColor,
-                Print(&user_input)
-            )?;
+            // Move cursor to the end of the typed input on the words line
+            queue!(stdout(), MoveTo(center_x - 20 + user_input.chars().count() as u16, 5))?;
             stdout().flush()?;
 
             // Handle input (non-terminal freezing1)
@@ -263,6 +259,9 @@ fn main() -> std::io::Result<()> {
                 }
             }
         };
+
+        // Hide cursor after the test
+        execute!(stdout(), Hide)?;
 
         // Calculate WPM
         let wpm = (correct_words as f32 / 0.5) as u32; 

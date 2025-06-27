@@ -1,6 +1,6 @@
 [package]
 name = "typoo"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2021"
 authors = ["zape"]
 repository = "https://github.com/sangeeth-606/typoo"
